@@ -2,8 +2,11 @@ import { Body, Controller, Get, Param, ParseIntPipe, Patch, Post, UseGuards, Use
 import { ErpService } from './erp.service';
 import { ClientDto } from './dto/client.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
+import { ApiSecurity, ApiTags } from '@nestjs/swagger';
 
 @Controller('/api/erp')
+@ApiTags("ERP")
+@ApiSecurity('apikey') 
 export class ErpController {
 
     constructor(private erpService: ErpService) { }

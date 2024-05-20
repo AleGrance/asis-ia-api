@@ -56,6 +56,11 @@ instalar ValidationPipe de Nestjs
 $ npm i --save class-validator class-transformer
 ```
 
+instalar dependencia swagger de Nestjs para la documentacion
+```bash
+$ $ npm install --save @nestjs/swagger
+```
+
 O bien instalar las dependencias directamente
 ```bash
 $ npm install

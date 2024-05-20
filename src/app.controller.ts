@@ -1,9 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
+import { ApiSecurity, ApiTags } from '@nestjs/swagger';
 
-@Controller('/api')
+@Controller('/app')
+@ApiTags("Home")
+@ApiSecurity('apikey') 
 export class AppController {
     @Get("/")
     get() {
-        return "API - ASIS";
+        return { msg: "ASIS IA - API"};
     }
 }
