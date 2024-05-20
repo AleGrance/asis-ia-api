@@ -1,5 +1,6 @@
-import { Controller, Get, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ErpService } from './erp.service';
+import { ClientDto } from './dto/client.dto';
 
 @Controller('/api/erp')
 export class ErpController {
@@ -19,8 +20,8 @@ export class ErpController {
 
     // GET ALL CLIENTS BY ASESOR
     @Get("/clientes/asesor/:cod_asesor")
-    getAllClientsByAsesor() {
-        return this.erpService.getClientsByAsesor();
+    getAllClientsByAsesor(@Param("cod_asesor") cod_asesor: string) {
+        return this.erpService.getClientsByAsesor(cod_asesor);
     }
 
     // GET ALL CLIENTS BY PLAN
@@ -43,8 +44,9 @@ export class ErpController {
 
     // CREATE NEW CLIENT
     @Post("/clientes")
-    postClient() {
-        return this.erpService.createClient();
+    // @UsePipes(new ValidationPipe()) // Se importan las validaciones del dto ClientDto
+    postClient(@Body() client: ClientDto) {
+        return this.erpService.createClient(client);
     }
 
     // UPDATE CLIENTS STATUS

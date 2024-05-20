@@ -31,8 +31,13 @@
 Nodejs v22.1.0
 Nestjs v10.3.2
 
+instalar dependencias
+
+
 instalar nest global
+````bash
 npm i -g nestjs
+````
 
 configurar eslint
 agregar:
@@ -46,9 +51,16 @@ agregar:
 ],
 ```
 
+instalar ValidationPipe de Nestjs
+```bash
+$ npm i --save class-validator class-transformer
+```
+
+O bien instalar las dependencias directamente
 ```bash
 $ npm install
 ```
+
 
 ## Running the app
 

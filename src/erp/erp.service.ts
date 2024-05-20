@@ -1,18 +1,27 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { ClientDto } from './dto/client.dto';
 
 @Injectable()
 export class ErpService {
+    private clientes = [];
 
     get() {
         return "Obteniendo datos desde service..."
     }
 
     getClients() {
-        return "Obteniendo clientes del erp...desde service"
+        return this.clientes;
     }
 
-    getClientsByAsesor() {
-        return "Obteniendo clientes POR ASESOR del erp...desde service"
+    getClientsByAsesor(cod_asesor: any) {
+        console.log('El param es:', parseInt(cod_asesor));
+        const clientesEncontrados = this.clientes.filter(cliente => cliente.cod_asesor == cod_asesor);
+
+        if(clientesEncontrados.length == 0) {
+            return new NotFoundException("No se econtraron clientes asociados");
+        }
+
+        return clientesEncontrados;
     }
 
     getClientsByPlan() {
@@ -29,7 +38,9 @@ export class ErpService {
         return "Obteniendo clientes POR FECHA DE CREACION del erp...desde service"
     }
 
-    createClient() {
+    createClient(client: ClientDto) {
+        console.log(client);
+        this.clientes.push(client);
         return "Creando nuevo cliente...desde service"
     }
 
