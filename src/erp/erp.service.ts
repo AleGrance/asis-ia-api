@@ -13,8 +13,8 @@ export class ErpService {
         return this.clientes;
     }
 
-    getClientsByAsesor(cod_asesor: any) {
-        console.log('El param es:', parseInt(cod_asesor));
+    getClientsByAsesor(cod_asesor: number) {
+        console.log('El param es:', cod_asesor);
         const clientesEncontrados = this.clientes.filter(cliente => cliente.cod_asesor == cod_asesor);
 
         if(clientesEncontrados.length == 0) {

@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Param, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Patch, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ErpService } from './erp.service';
 import { ClientDto } from './dto/client.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('/api/erp')
 export class ErpController {
@@ -14,13 +15,17 @@ export class ErpController {
 
     // GET ALL CLIENTS
     @Get("/clientes")
+    // @UseGuards(AuthGuard)
     getAllClients() {
         return this.erpService.getClients();
     }
 
     // GET ALL CLIENTS BY ASESOR
     @Get("/clientes/asesor/:cod_asesor")
-    getAllClientsByAsesor(@Param("cod_asesor") cod_asesor: string) {
+    /** 
+     *  Se utiliza el pipe ParseIntPipe para formatear el parametro a entero
+     */
+    getAllClientsByAsesor(@Param("cod_asesor", ParseIntPipe) cod_asesor: number) {
         return this.erpService.getClientsByAsesor(cod_asesor);
     }
 
