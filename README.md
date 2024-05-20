@@ -27,11 +27,24 @@
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
+
 Nodejs v22.1.0
 Nestjs v10.3.2
 
 instalar nest global
-	npm i -g nestjs
+npm i -g nestjs
+
+configurar eslint
+agregar:
+
+```js
+'prettier/prettier': [
+  'error',
+  {
+    endOfLine: 'auto',
+  },
+],
+```
 
 ```bash
 $ npm install
@@ -76,3 +89,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## Structure
+
+app.module
