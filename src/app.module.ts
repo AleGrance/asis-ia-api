@@ -1,9 +1,10 @@
-import { Get, Module } from '@nestjs/common';
-import { ErpModule } from './erp/erp.module';
-import { CrmModule } from './crm/crm.module';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { APP_GUARD } from '@nestjs/core';
-import { AuthGuard } from './auth/auth.guard';
+import { ErpModule } from './modules/erp/erp.module';
+import { CrmModule } from './modules/crm/crm.module';
+import { AuthGuard } from './common/auth/auth.guard';
+import { Firebird } from './modules/firebird/firebird';
 
 @Module({
   imports: [ErpModule, CrmModule],
@@ -13,7 +14,8 @@ import { AuthGuard } from './auth/auth.guard';
     {
       provide: APP_GUARD,
       useClass: AuthGuard
-    }
+    },
+    Firebird
   ],
 })
 export class AppModule {

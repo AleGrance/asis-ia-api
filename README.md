@@ -31,9 +31,6 @@
 Nodejs v22.1.0
 Nestjs v10.3.2
 
-instalar dependencias
-
-
 instalar nest global
 ````bash
 npm i -g nestjs
@@ -58,14 +55,18 @@ $ npm i --save class-validator class-transformer
 
 instalar dependencia swagger de Nestjs para la documentacion
 ```bash
-$ $ npm install --save @nestjs/swagger
+$ npm install node-firebird @nestjs/common
+```
+
+instalar dependencia swagger de Nestjs para la documentacion
+```bash
+$ npm install --save @nestjs/swagger
 ```
 
 O bien instalar las dependencias directamente
 ```bash
 $ npm install
 ```
-
 
 ## Running the app
 
